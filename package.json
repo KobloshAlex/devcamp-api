@@ -1,0 +1,28 @@
+{
+  "name": "devcamp-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KobloshAlex/devcamp-api.git"
+  },
+  "author": "KobloshAlex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KobloshAlex/devcamp-api/issues"
+  },
+  "homepage": "https://github.com/KobloshAlex/devcamp-api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
