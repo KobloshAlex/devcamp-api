@@ -1,10 +1,16 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const bootcampRouter = require("./routes/bootcampsRouter");
 const morgan = require("morgan");
+const connect = require('./config/db');
+const bootcampRouter = require("./routes/bootcampsRouter");
 const app = express();
 //env config
 dotenv.config({ path: "./config/config.env" });
+//connect to Mongo
+connect();
+//body parser
+app.use(express.json());
+
 //logger
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
