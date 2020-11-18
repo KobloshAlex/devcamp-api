@@ -4,7 +4,6 @@ const errorHandler = require("../middleware/errorHandler");
 const geocoder = require("../utils/geocoder");
 const Bootcamp = require("../model/Bootcamp");
 const ErrorResponse = require("../utils/errorResponse");
-const router = require("../routes/coursesRouter");
 
 /*
 @desc       Get all bootcamps
