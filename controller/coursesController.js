@@ -3,6 +3,7 @@ const errorHandler = require("../middleware/errorHandler");
 const Course = require("../model/Course");
 const Bootcamp = require("../model/Bootcamp");
 const ErrorResponse = require("../utils/errorResponse");
+const { reverse } = require("../utils/geocoder");
 
 /*
 @desc       Get all courses
@@ -11,28 +12,17 @@ const ErrorResponse = require("../utils/errorResponse");
 @access     public
 */
 exports.getCourses = asyncHandler(async (req, res, next) => {
-	let query;
-
-	//@route      GET /api/v1/bootcamps/:bootcampID/courses
-	console.log(req.params.bootcampId);
 	if (req.params.bootcampId) {
-		query = Course.find({
-			bootcamp: req.params.bootcampId,
-		});
-		//@route      GET /api/v1/courses
-	} else {
-		query = Course.find().populate({
-			path: "bootcamp",
-			select: "name description",
-		});
-	}
+		const courses = await Course.find({ bootcamp: req.params.bootcampId });
 
-	const courses = await query;
-	res.status(200).json({
-		success: true,
-		count: courses.length,
-		data: courses,
-	});
+		return res.status(200).json({
+			success: true,
+			coutn: courses.length,
+			data: courses,
+		});
+	} else {
+		res.status(200).json(res.advancedResults);
+	}
 });
 
 /*
