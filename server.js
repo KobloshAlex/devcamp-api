@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const connect = require("./config/db");
 const fileupload = require("express-fileupload");
+const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/errorHandler");
 const app = express();
 
@@ -20,6 +21,9 @@ const authRouter = require("./routes/authRouter");
 
 //body parser
 app.use(express.json());
+
+//Cookie parser
+app.use(cookieParser());
 
 //logger
 if (process.env.NODE_ENV === "development") {
